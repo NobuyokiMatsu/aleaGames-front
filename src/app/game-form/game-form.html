@@ -1,1 +1,14 @@
-<p>game-form works!</p>
+<h2 mat-dialog-title>Nouveau Jeu</h2>
+<mat-dialog-content>
+  <form [formGroup]="gameForm">
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <!-- Ajoute les autres champs (complexity, playingTime, etc.) -->
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onSubmit()">Enregistrer</button>
+  <button mat-button mat-dialog-close>Annuler</button>
+</mat-dialog-actions>

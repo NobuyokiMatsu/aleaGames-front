@@ -1,1 +1,47 @@
-<p>home works!</p>
+<div class="container">
+  <h1>Sélection aléatoire de jeux</h1>
+
+  <!-- Filtres -->
+  <div class="filters">
+    <mat-form-field>
+      <mat-label>Complexité min</mat-label>
+      <mat-select [(value)]="minComplexity">
+        <mat-option *ngFor="let opt of complexityOptions" [value]="opt">
+          {{ opt }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Complexité max</mat-label>
+      <mat-select [(value)]="maxComplexity">
+        <mat-option *ngFor="let opt of complexityOptions" [value]="opt">
+          {{ opt }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Durée (champs de saisie manuelle) -->
+    <mat-form-field>
+      <mat-label>Durée min (minutes)</mat-label>
+      <input matInput type="number" [(ngModel)]="minPlayingTime" placeholder="Ex: 30">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Durée max (minutes)</mat-label>
+      <input matInput type="number" [(ngModel)]="maxPlayingTime" placeholder="Ex: 120">
+    </mat-form-field>
+
+    <!-- Boutons -->
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="openGameForm()">Nouveau Jeu</button>
+      <button mat-raised-button color="accent" (click)="selectRandomGame()">Sélection Aléatoire</button>
+      <button mat-raised-button color="warn" (click)="validateGameSelection()">Valider le Jeu</button>
+    </div>
+  </div>
+
+  <!-- Résultat de la sélection -->
+  <div *ngIf="selectedGame" class="selected-game">
+    <h2>Jeu sélectionné : {{ selectedGame.name }}</h2>
+  </div>
+</div>
