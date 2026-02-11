@@ -2,12 +2,26 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { GameFormComponent } from '../game-form/game-form';
 import { GameService } from '../services/game';
+import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatOption, MatSelect, MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   standalone: true,
   selector: 'app-home',
   templateUrl: './home.html',
-  imports:[MatDialogModule],
+  imports:[
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    FormsModule,
+    CommonModule
+  ],
   styleUrls: ['./home.scss']
 })
 export class HomeComponent {

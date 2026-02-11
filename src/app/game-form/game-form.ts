@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogActions, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { GameService } from '../services/game';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 
 @Component({
   standalone: true,
   selector: 'app-game-form',
   templateUrl: './game-form.html',
-  imports:[MatDialogRefModule],
+  imports:[MatDialogContent,
+    MatFormField,
+    MatLabel,
+    MatDialogActions,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   styleUrls: ['./game-form.scss']
 })
 export class GameFormComponent implements OnInit {

@@ -10,8 +10,8 @@ export class GameService {
 
   constructor(private http: HttpClient) {}
 
-  getRandomGame(minComplexity: number, maxComplexity: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/random?minComplexity=${minComplexity}&maxComplexity=${maxComplexity}`);
+  getRandomGame(searchGameDTO: any): Observable<any> {
+    return this.http.get(`${this.apiUrl}/random`, searchGameDTO);
   }
 
   createGame(game: any): Observable<any> {
