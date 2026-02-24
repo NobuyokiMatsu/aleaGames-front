@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home';
   selector: 'app-root',
   templateUrl: './app.html',
   imports:[HomeComponent],
-  styleUrl: './app.scss'
+  styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('alea-games-front');

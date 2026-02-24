@@ -8,6 +8,8 @@ import { MatOption, MatSelect, MatSelectModule } from '@angular/material/select'
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
+import { searchGameDTO } from '../models/searchGameDto';
+import { AddSessionGameComponent } from '../add-session-game/add-session-game';
 
 @Component({
   standalone: true,
@@ -22,7 +24,7 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     CommonModule
   ],
-  styleUrls: ['./home.scss']
+  styleUrls: ['./home.css']
 })
 export class HomeComponent {
   minComplexity: number = 1;
@@ -44,7 +46,7 @@ export class HomeComponent {
   }
 
   selectRandomGame(): void {
-    const searchGameDTO = {
+    const searchGameDTO: searchGameDTO = {
       complexityMin: this.minComplexity,
       complexityMax: this.maxComplexity,
       playingTimeMin: this.minPlayingTime,
@@ -57,11 +59,18 @@ export class HomeComponent {
   }
 
   validateGameSelection(): void {
+    console.log(this.selectedGame);
     if (this.selectedGame) {
-      this.gameService.validateGame(this.selectedGame.id)
+      this.gameService.validateGame(this.selectedGame.idGame)
         .subscribe(() => {
-          alert(`Jeu ${this.selectedGame.name} validé !`);
+          alert(`On a joué à ${this.selectedGame.name} aujourd'hui !`);
         });
     }
+  }
+  
+  addSessionForSpecificGame() {
+    this.dialog.open(AddSessionGameComponent, {
+      width: '400px'
+    });
   }
 }

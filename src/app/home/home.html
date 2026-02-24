@@ -1,7 +1,8 @@
 <div class="container">
-  <h1>Sélection aléatoire de jeux</h1>
+  <div class ="center-container">
+    <h1>Sélection aléatoire de jeux</h1>
+  </div>
 
-  <!-- Filtres -->
   <div class="filters">
     <mat-form-field>
       <mat-label>Complexité min</mat-label>
@@ -21,7 +22,6 @@
       </mat-select>
     </mat-form-field>
 
-    <!-- Durée (champs de saisie manuelle) -->
     <mat-form-field>
       <mat-label>Durée min (minutes)</mat-label>
       <input matInput type="number" [(ngModel)]="minPlayingTime" placeholder="Ex: 30">
@@ -34,14 +34,15 @@
 
     <!-- Boutons -->
     <div class="buttons">
-      <button mat-raised-button color="primary" (click)="openGameForm()">Nouveau Jeu</button>
-      <button mat-raised-button color="accent" (click)="selectRandomGame()">Sélection Aléatoire</button>
-      <button mat-raised-button color="warn" (click)="validateGameSelection()">Valider le Jeu</button>
+      <button mat-raised-button (click)="openGameForm()">Nouveau Jeu</button>
+      <button mat-raised-button (click)="selectRandomGame()">Sélection Aléatoire</button>
+      <button mat-raised-button (click)="validateGameSelection()">Valider le Jeu</button>
+      <button mat-raised-button (click)="addSessionForSpecificGame()">Ajouter une partie</button>
     </div>
   </div>
 
-  <!-- Résultat de la sélection -->
   <div *ngIf="selectedGame" class="selected-game">
-    <h2>Jeu sélectionné : {{ selectedGame.name }}</h2>
+    <h2>Jeu sélectionné : </h2>
+    <h3 class="highlight">{{ selectedGame.name }}</h3>
   </div>
 </div>

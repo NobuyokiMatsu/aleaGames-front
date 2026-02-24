@@ -5,7 +5,35 @@
       <mat-label>Nom</mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
-    <!-- Ajoute les autres champs (complexity, playingTime, etc.) -->
+    <mat-form-field>
+      <mat-label>Complexité</mat-label>
+        <mat-select formControlName="complexity">
+          <mat-option *ngFor="let value of complexityValues" [value]="value">
+            {{ value }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Temps de jeu (min)</mat-label>
+      <input matInput formControlName="playingTime">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Type(s)</mat-label>
+        <mat-select formControlName="typeList" multiple>
+          <mat-option *ngFor="let value of typeList" [value]="value">
+            {{ value.name }}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="lastTimePlayed">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-checkbox formControlName="competitive">
+      <mat-label>Compétitif</mat-label>
+    </mat-checkbox>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>

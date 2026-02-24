@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Nouveau Jeu</h2>
+<mat-dialog-content>
+    <form [formGroup]="searchForm">
+    <!-- Champ de recherche avec autocomplétion -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Rechercher un jeu</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="search"
+        [matAutocomplete]="auto"
+        (keyup)="filterGames()"
+      >
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let game of filteredGames"
+          [value]="game.name"
+          (click)="onGameSelected(game.idGame)"
+        >
+          {{ game.name }}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <!-- Champ caché pour stocker l'ID du jeu sélectionné -->
+    <input type="hidden" formControlName="selectedGame">
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onSubmit()">Enregistrer</button>
+  <button mat-button mat-dialog-close>Annuler</button>
+</mat-dialog-actions>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { searchGameDTO } from '../models/searchGameDto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class GameService {
   constructor(private http: HttpClient) {}
 
   getRandomGame(searchGameDTO: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}/random`, searchGameDTO);
+    return this.http.post(`${this.apiUrl}/randomGame`, searchGameDTO);
   }
 
   createGame(game: any): Observable<any> {
@@ -19,6 +20,10 @@ export class GameService {
   }
 
   validateGame(id: number): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${id}/validate`, {});
+    return this.http.put(`${this.apiUrl}/selected/${id}`, null);
+  }
+
+  getAllGames(): Observable<any> {
+    return this.http.get(`${this.apiUrl}`);
   }
 }
